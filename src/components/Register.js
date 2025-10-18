@@ -5,9 +5,9 @@ const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     phone: '',
-    username: '',
+    fullname: '', // Changed from 'username' to 'fullname'
     password: '',
-    school: ''
+    employeeId: '' // Changed from 'school' to 'employeeId' for clarity
   });
 
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ const Register = () => {
     console.log('📝 Form data:', formData);
     
     // Validation
-    if (!formData.phone || !formData.username || !formData.password || !formData.school) {
+    if (!formData.phone || !formData.fullname || !formData.password || !formData.employeeId) {
       alert('Please fill in all fields');
       return;
     }
@@ -45,8 +45,8 @@ const Register = () => {
     console.log('✅ SUCCESSFULLY REGISTERED!');
     console.log('📋 User data saved:', {
       phone: formData.phone,
-      username: formData.username,
-      school: formData.school
+      fullname: formData.fullname,
+      employeeId: formData.employeeId
     });
     
     // Show success alert
@@ -77,8 +77,8 @@ const Register = () => {
             <label>Fullname</label>
             <input
               type="text"
-              name="fullname"
-              value={formData.username}
+              name="fullname" // Changed to match state property
+              value={formData.fullname} // Now using fullname
               onChange={handleChange}
               placeholder="Enter fullname"
               required
@@ -86,7 +86,7 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label>employee Password</label>
+            <label>Employee Password</label>
             <input
               type="password"
               name="password"
@@ -98,11 +98,11 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label>employee ID</label>
+            <label>Employee ID</label>
             <input
               type="text"
-              name="school"
-              value={formData.school}
+              name="employeeId" // Changed to match state property
+              value={formData.employeeId} // Now using employeeId
               onChange={handleChange}
               placeholder="Enter your employee ID"
               required
@@ -117,6 +117,9 @@ const Register = () => {
           </button>
         </form>
         
+        <p className="auth-link">
+          Already have an account? <Link to="/login">Login here</Link>
+        </p>
       </div>
     </div>
   );
